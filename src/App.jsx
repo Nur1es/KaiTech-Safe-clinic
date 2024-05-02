@@ -1,12 +1,12 @@
 import './App.css'
+import AuthSignIn from './Components/form/AuthSignIn'
 
 function App() {
 
   return (
-    <>
-      <h1>hello world</h1>
-      <h1>Started</h1>
-    </>
+    <div>
+    <AuthSignIn/>
+    </div>
   )
 }
 

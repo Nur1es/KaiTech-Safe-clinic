@@ -1,5 +1,5 @@
 import React from "react";
-import Safety from "../../assets/img/Safety.svg";
+import Safety from "../../assets/img/Safety.png";
 import EmailIcon from "../../assets/icon/EmailIcon.svg";
 import IconClose from "../../assets/icon/IconClose.svg";
 import Visibility from "@mui/icons-material/Visibility";

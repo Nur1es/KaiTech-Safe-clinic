@@ -26,8 +26,8 @@ const Filial = () => {
     dispatch(getFilial());
   };
   const handleEditBranch = (id) => {
-    setOpen(true);
-    setEditFormData(branch.find((item) => item.id === id));
+    setEdit(true);
+    setEditFormData(branch.results.find((item) => item.id === id));
   };
   const handleDeltBranch = async (id) => {
     setDel(true);
@@ -43,14 +43,12 @@ const Filial = () => {
       console.log(err);
     }
   };
-
   const deleteChangeFilial = async () => {
     try {
       const response = await deleteFilialReq(filialId);
       if (response) {
         dispatch(getFilial());
       }
-
       onCloseDel();
       return response;
     } catch (error) {
@@ -82,7 +80,9 @@ const Filial = () => {
   React.useEffect(() => {
     dispatch(getFilial());
   }, [dispatch]);
+
   const filialColumns = ["Название", "Адрес", "Директор", "Действия"];
+
   return (
     <div style={{ width: "1160px" }}>
       <DelModal

@@ -11,12 +11,12 @@ export const router = createBrowserRouter([
     element: <SignIn />,
   },
   {
-    path: "/admin",
+    path: "/admin/",
     element: <AdminLayout />,
     children: [
       {
         path: "analytics",
-        element: <>eldiyar</>,
+        element: <></>,
       },
       {
         path: "usluga",
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "notification",
-        element: <h1>Uvidimlenie</h1>,
+        element: <></>,
       },
       {
         path: "setting",

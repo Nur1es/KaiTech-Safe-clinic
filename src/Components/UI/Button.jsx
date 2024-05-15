@@ -23,7 +23,7 @@ const Button = ({
       background={background}
       fontWeight={fontWeight}
       borderRadius={borderRadius}
-      type={type}
+      type="submit"
     >
       {children}
     </StyledButton>

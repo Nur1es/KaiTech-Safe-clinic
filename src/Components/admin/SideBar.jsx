@@ -1,197 +1,131 @@
 import React from "react";
-import { Menu } from "antd";
-import analitik from "../../assets/icon/analitick.svg";
-import branch from "../../assets/icon/branches.svg";
-import dictor from "../../assets/icon/doctorsIcon.svg";
-import noti from "../../assets/icon/notification.svg";
-import patients from "../../assets/icon/patients.svg";
-import service from "../../assets/icon/service.svg";
-import setting from "../../assets/icon/settings.svg";
-import logo from "../../assets/icon/logo.svg";
-import exist from "../../assets/icon/exist.svg";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-
-function getItem(label, key, icon, children, type, path) {
-  return {
-    label,
-    key,
-    icon,
-    children,
-    type,
-    path,
-  };
-}
-
-const items = [
-  getItem(
-    "Аналитика",
-    "1",
-    <img src={analitik} alt="dfewfew" />,
-    null,
-    "item",
-    "analytics"
-  ),
-  getItem(
-    "Услуги",
-    "2",
-    <img src={service} alt="dfewfew" />,
-    null,
-    "item",
-    "usluga"
-  ),
-  getItem(
-    "Список врачей",
-    "3",
-    <img src={dictor} alt="dfewfew" />,
-    null,
-    "item",
-    "list-doctors"
-  ),
-  getItem(
-    "Список пациентов",
-    "4",
-    <img src={patients} alt="dfewfew" />,
-    null,
-    "item",
-    "list-pasient"
-  ),
-  getItem(
-    "Филиалы ",
-    "5",
-    <img src={branch} alt="dfewfew" />,
-    null,
-    "item",
-    "branch"
-  ),
-  getItem(
-    "Уведомление ",
-    "6",
-    <img src={noti} alt="dfewfew" />,
-    null,
-    "item",
-    "notification"
-  ),
-  getItem(
-    "Настройка ",
-    "7",
-    <img src={setting} alt="dfewfew" />,
-    null,
-    "item",
-    "setting"
-  ),
+import { Link, NavLink } from "react-router-dom";
+import { styled } from "@mui/material";
+export const NavLinkAdmin = [
+  {
+    link: "/admin/analytics",
+    icon: "/icon/analitick.svg",
+    name: "Аналитика",
+  },
+  {
+    link: "/admin/usluga",
+    icon: "/icon/usluga.svg",
+    name: "Услуги",
+  },
+  {
+    link: "/admin/list-doctors",
+    icon: "/icon/doctorsIcon.svg",
+    name: "Список врачей",
+  },
+  {
+    link: "/admin/list-pasient",
+    icon: "/icon/patients.svg",
+    name: "Список пациентов",
+  },
+  {
+    link: "/admin/branch",
+    icon: "/icon/branches.svg",
+    name: "Филиалы ",
+  },
+  {
+    link: "/admin/Notification",
+    icon: "/icon/notification.svg",
+    name: "Уведомление",
+  },
+  {
+    link: "/admin/setting",
+    icon: "/icon/settings.svg",
+    name: "Настройкаx",
+  },
 ];
 
 const SideBar = () => {
-  const onClick = (e) => {
-    // console.log('click ', e);
-  };
-
   return (
-    <SideBarr
-      onClick={onClick}
-      style={{
-        width: 318,
-      }}
-      defaultSelectedKeys={["1"]}
-      defaultOpenKeys={["sub1"]}
-      mode="inline"
-    >
-      <Logo>
-        <LogoDiv>
-          <img src={logo} alt="" />
-          <LogoTextStyle>safe.clinic</LogoTextStyle>
-        </LogoDiv>
-        
-        <LogoDiv2>
-          <span>Все условия для вашей безопасности</span>
-        </LogoDiv2>
-      </Logo>
-      {items.map((item, id) => (
-        <MenuItem key={id} icon={item.icon}>
-          <Itemm style={{ marginTop: "0px" }} key={item.key} to={item.path}>
-            {item.label}
-          </Itemm>
-        </MenuItem>
-      ))}
-      <Exist>
-        <Link to={"/auth"}>
-          <ButtonStyle>
-            <img src={exist} alt="" /> Выход
-          </ButtonStyle>
-        </Link>
-      </Exist>
-    </SideBarr>
+    <div>
+      <MainBlock>
+        <StyledDiv>
+          <StyledText>
+            <img style={{ width: 20 }} src="/img/Safety.png" alt="logo" />
+            <h3>safe.clinic</h3>
+          </StyledText>
+          <p>Все условия для вашей безопасности</p>
+          <div>
+            {NavLinkAdmin.map((elem, index) => (
+              <NavLinkStyle to={elem.link} key={index}>
+                <img src={elem.icon} alt="icon" />
+                <p>{elem.name}</p>
+              </NavLinkStyle>
+            ))}
+          </div>
+        </StyledDiv>
+          <ButtonExit>
+            <img src="/icon/exist.svg" alt="" />
+            <p>Выход</p>
+          </ButtonExit>
+      </MainBlock>
+    </div>
   );
 };
 
 export default SideBar;
 
-const ButtonStyle = styled.button`
-  width: 123px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  border: none;
-  border-radius: 6px;
-  background-color: #dcdbff;
-  cursor: pointer;
-`;
-
-const Exist = styled.div`
-  height: 130px;
-  display: flex;
-  width: 277px;
-  align-items: end;
-  padding: 0 0 10px 0px;
-`;
-const SideBarr = styled(Menu)`
-  position: fixed;
-  height: 100vh;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-`;
-
-const Logo = styled.div`
-  width: 196px;
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-`;
-
-const LogoDiv = styled.div`
-  width: 196px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const LogoDiv2 = styled.div`
-  width: 183px;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-  margin: 10px 0;
-  line-height: 1;
-`;
-
-const LogoTextStyle = styled.h2`
-  color: #53a8bb;
-  font-size: 31.37px;
-  font-weight: 600;
-`;
-
-const Itemm = styled(Link)`
-  width: 100%;
-`;
-const MenuItem = styled(Menu.Item)`
-  width: 100%;
-`;
+const StyledDiv = styled("div")(() => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  p: {
+    fontFamily: "Montserrat",
+    fontSize: "14px",
+    width: "185px",
+    textAlign: "center",
+  },
+}));
+const StyledText = styled("p")(() => ({
+  display: "flex",
+  alignItems: "center",
+  margin: "23px 0",
+  gap: "5px",
+  h3: {
+    fontFamily: " Montserrat ",
+    fontSize: "20px",
+    fontWeight: 600,
+    color: "#53A8BB",
+  },
+}));
+const MainBlock = styled("div")(() => ({
+  width: "320px",
+  background: "white",
+  height: "727px",
+}));
+const NavLinkStyle = styled(NavLink)(() => ({
+  display: "flex",
+  marginTop: "30px",
+  gap: "10px",
+  padding: "7px 10px",
+  borderRadius: "5px",
+  " &.active": {
+    background: "#dddcff",
+  },
+  p: {
+    textAlign: "start",
+    fontFamily: "Montserrat",
+    fontSize: "16px",
+    color: "black",
+    fontWeight: 500,
+  },
+  textDecoration: "none",
+  borderBottom: "none",
+}));
+const ButtonExit = styled("div")(() => ({
+  display: "flex",
+  background: "#DCDBFF",
+  padding: "15px",
+  gap: "20px",
+  width: "100px",
+  borderRadius: "10px",
+  margin: "95px 30px",
+  p: {
+    fontWeight: 500,
+    fontFamily: "Montserrat",
+  },
+}));

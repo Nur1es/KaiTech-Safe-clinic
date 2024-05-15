@@ -9,43 +9,42 @@ import { Box, styled } from "@mui/material";
 import { AppointmentToDoctor } from "../../../utils/constanta";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { patchFilialReq } from "../../../service/filial";
-import { useParams } from "react-router-dom";
+import { patchFilial } from "../../../store/filial/filial-thunk";
 
-const EditBranch = ({ open, onClose }) => {
-  const { handleSubmit, register } = useForm();
-  const dispatch = useDispatch();
-  const [editFormData, setEditFormData] = useState({});
-  const { id } = useParams();
-
-  useEffect(() => {
-    if (open) {
-      setValue(
-        "name",
-        editFormData.name,
-        "address",
-        editFormData.address,
-        "director",
-        editFormData.director,
-        "phone_numbe",
-        editFormData.phone_numbe
-      );
+const EditBranch = ({ open, onClose, editFormData }) => {
+  const [form, setForm] = React.useState(
+    editFormData || {
+      name: "",
+      address: "",
+      director: "",
+      phone_number: "",
+      id: 0,
     }
+  );
+  const { handleSubmit, register } = useForm({ defaultValues: editFormData });
+  const dispatch = useDispatch();
+  console.log(form);
 
-    console.log(editFormData.name);
-    console.log("m xasndkquduqfdi");
-  }, [open]);
-  const onSubmit = async (branchEdit) => {
-    setEditFormData(branchEdit);
-
+  const onSubmit = async (data) => {
+    const editData = {
+      name: data.name,
+      address: data.address,
+      director: data.director,
+      phone_number: data.phone_number,
+      id: data.id,
+    };
     try {
-      const edit = await dispatch(patchFilialReq(filialId, branchEdit));
+      console.log(editData);
+      const edit = await dispatch(patchFilial(editData));
       return edit;
     } catch (error) {
       console.log("not found");
     }
   };
-
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    setForm((prevDefault) => ({ ...prevDefault, [name]: value }));
+  };
   return (
     <div>
       <Modal open={open} onClose={onClose} borderRadius={"8px"}>
@@ -60,8 +59,11 @@ const EditBranch = ({ open, onClose }) => {
                   width={"287px"}
                   height={"35px"}
                   borderRadius={"4px"}
-                  {...register("name")}
                   label={"Название филиала*"}
+                  {...register("name")}
+                  name="name"
+                  value={form.name}
+                  onChange={handleChangeInput}
                 />
                 <Input
                   {...register("address")}
@@ -69,6 +71,9 @@ const EditBranch = ({ open, onClose }) => {
                   height={"35px"}
                   label={"Адрес*"}
                   borderRadius={"4px"}
+                  name="address"
+                  value={form.address}
+                  onChange={handleChangeInput}
                 />
               </Div>
               <DivTwo>
@@ -78,6 +83,9 @@ const EditBranch = ({ open, onClose }) => {
                   label={"Директор*"}
                   width={"287px"}
                   padding={"6px 0"}
+                  name="director"
+                  value={form.director}
+                  onChange={handleChangeInput}
                 />
                 <Input
                   width={"287px"}
@@ -85,6 +93,9 @@ const EditBranch = ({ open, onClose }) => {
                   height={"35px"}
                   label={"Телефон*"}
                   borderRadius={"4px"}
+                  name="phone_number"
+                  onChange={handleChangeInput}
+                  value={form.phone_number}
                 />
               </DivTwo>
             </StyledBoxTwo>

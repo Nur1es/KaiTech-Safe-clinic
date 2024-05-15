@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getFilialReq, postFilialReq } from "../../service/filial";
+import { getFilialReq, patchFilialReq, postFilialReq } from "../../service/filial";
 
 export const getFilial = createAsyncThunk(
   "branch/getFilial",
@@ -17,9 +17,21 @@ export const postFilial = createAsyncThunk(
   async (data, { rejectedWithValue }) => {
     try {
       const response = await postFilialReq(data);
-      return response.results;
+      return response;
     } catch (error) {
       return rejectedWithValue("Something went wrong!!!");
     }
+  }
+);
+
+export const patchFilial = createAsyncThunk(
+  "branch/patchFilial",
+  async (data,{rejectWithValue}) => {
+ try {
+  const response = await patchFilialReq(data.id,data)
+  return response
+ } catch (error) {
+  return rejectWithValue("уйго барып эс албайсынбы")
+ }
   }
 );

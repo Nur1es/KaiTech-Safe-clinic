@@ -1,5 +1,4 @@
 import React from "react";
-import Safety from "../../assets/img/Safety.png";
 import EmailIcon from "../../assets/icon/EmailIcon.svg";
 import IconClose from "../../assets/icon/IconClose.svg";
 import Visibility from "@mui/icons-material/Visibility";
@@ -24,17 +23,17 @@ const AuthSignIn = () => {
   };
 
   return (
-    <Box sx={{marginLeft:7}}>
+    <Box>
       <StyledContainerBox>
         <StyledDivBlock>
-          <img src={Safety} alt="" />
+          <img src="/img/Safety.png" alt="" />
           <h1>safe.clinic</h1>
         </StyledDivBlock>
         <StyledBoxText>
           <h6>Вход на веб приложение</h6>
           <p>Все условия для вашей безопасности</p>
         </StyledBoxText>
-        <Box sx={{ display: "flex", marginRight:"60px" }}>
+        <Box sx={{ display: "flex", marginRight: "60px" }}>
           <div>
             <div style={{ marginTop: "15px" }}>
               <StyledLabel>Name *</StyledLabel>
@@ -73,19 +72,19 @@ const AuthSignIn = () => {
               </Box>
             </Box>
             <div style={{ margin: "20px 0 0 55px" }}>
-                  <Button
-                    padding="10px 50px"
-                    color={"white"}
-                    borderRadius={"3.12px"}
-                    border={"solid 1px #53A8BB"}
-                    background={"#53A8BB"}
-                    fontSize={"14px"}
-                    fontWeight={500}
-                    type="submit"
-                  >
-                    Войти на сайт
-                  </Button>
-              </div>
+                <Button
+                  padding="10px 50px"
+                  color={"white"}
+                  borderRadius={"3.12px"}
+                  border={"solid 1px #53A8BB"}
+                  background={"#53A8BB"}
+                  fontSize={"14px"}
+                  fontWeight={500}
+                  type="submit"
+                >
+                  Войти на сайт
+                </Button>
+            </div>
           </div>
         </Box>
       </StyledContainerBox>
@@ -98,8 +97,9 @@ const StyledContainerBox = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   flexDirection: "column",
-  justifyContent: "center",
-  marginTop: "50px",
+  height: "727px",
+  // marginTop: "50px",
+  background: "white",
 }));
 const StyledDivBlock = styled("div")(() => ({
   display: "flex",
@@ -162,19 +162,6 @@ const StyledSelectBox = styled(Box)(() => ({
     border: "solid 1.5px #CED4DA",
   },
 }));
-// const StyledSelect = styled(Select)(({ theme }) => ({
-//   borderBottomLeftRadius: 0,
-//   borderTopLeftRadius: 0,
-//   width: "230px",
-//   "&.MuiInputBase-root.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-//     {
-//       borderColor: "transparent",
-//       border: "solid 2px #CED4DA",
-//       borderBottomLeftRadius: 0,
-//       borderTopLeftRadius: 0,
-//     },
-
-// }));
 const StyledSelectBoxTwo = styled(Box)(() => ({
   display: "flex",
   img: {

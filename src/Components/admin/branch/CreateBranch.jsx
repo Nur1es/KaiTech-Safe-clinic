@@ -9,21 +9,12 @@ import { Box, styled } from "@mui/material";
 import { AppointmentToDoctor } from "../../../utils/constanta";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { postFilial } from "../../../store/filial/filial-thunk";
 
 const CreateBranch = ({ open, onClose, editFormData }) => {
   const { handleSubmit, register, setValue } = useForm();
   const dispatch = useDispatch();
-  const { id } = useParams();
-  useEffect(() => {
-    if (open && editFormData) {
-      setValue("name", editFormData.name || "");
-      setValue("address", editFormData.address || "");
-      setValue("director", editFormData.director || "");
-      setValue("phone_number", editFormData.phone_number || "");
-    }
-  }, [open, editFormData]);
 
   const onSubmit = async (data) => {
     const branchData = {
@@ -52,9 +43,7 @@ const CreateBranch = ({ open, onClose, editFormData }) => {
       <Modal open={open} onClose={onClose} borderRadius={"8px"}>
         <>
           <StyledBox>
-            <h2>
-              {editFormData ? "Редактировать филиала" : "Создать новый филиал"}
-            </h2>
+            <h2>Создать новый филиал</h2>
           </StyledBox>
           <form onSubmit={handleSubmit(onSubmit)}>
             <StyledBoxTwo>

@@ -25,7 +25,7 @@ export default function TableTest({
           <TitleButton onClick={() => tableCreate()}>+ Добавить</TitleButton>
         </Gggg>
 
-        <BoxTitle style={{ borderBottom: "2px solid #bbbbbb" }}>
+        <BoxTitle style={{ borderBottom: "1px solid #bbbbbb" }}>
           {tableHeadData.map((str, i) => (
             <TitleString style={{ width: "auto" }} key={i}>
               {str}
@@ -49,16 +49,15 @@ export default function TableTest({
                 {obj.name}
               </TitleString>
 
-              <TitleString
-                style={{ fontSize: "16px", color: "rgb(70,100,140)" }}
-              >
+                 
+              <TitleString style={{ fontSize: "16px",  color: "#5B5B98" }}>
                 {obj.address}
               </TitleString>
 
               <TitleString
                 style={{
                   fontSize: "16px",
-                  color: "rgb(70,100,200)",
+                  color: "#5B5B98",
                   fontWeight: "600",
                 }}
               >
@@ -103,13 +102,14 @@ const Gggg = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 20px;
-  margin-top: 35px;
+  margin-top: 25px;
   padding-bottom: 9px;
   border-bottom: 2px solid #eef0f7;
 `;
 const TableTitle = styled.h2`
   font-size: 20px;
   font-weight: 500;
+  font-family: Montserrat;
 `;
 const TitleButton = styled.button`
   color: white;

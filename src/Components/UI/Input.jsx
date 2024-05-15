@@ -6,6 +6,7 @@ const Input = forwardRef(
     {
       label,
       width,
+      name,
       height,
       margin,
       value,
@@ -13,6 +14,8 @@ const Input = forwardRef(
       textAlign,
       placeholder,
       borderRadius,
+      onChange,
+      register,
       ...rest
     },
     ref
@@ -21,13 +24,16 @@ const Input = forwardRef(
       <StyledDivInput ref={ref}>
         <StyledLabel textAlign={textAlign}>{label}</StyledLabel>
         <StyledInput
-          ref={ref}
           {...rest}
+          register
+          ref={ref}
+          name={name}
+          value={value}
           width={width}
           margin={margin}
-          value={value}
           height={height}
           padding={padding}
+          onChange={onChange}
           placeholder={placeholder}
           borderRadius={borderRadius}
         />

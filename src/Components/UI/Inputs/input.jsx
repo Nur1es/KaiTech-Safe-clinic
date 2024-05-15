@@ -5,10 +5,6 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import filter from "../../../assets/icon/filterInput.svg";
-import Divider from "@mui/material/Divider";
-import DirectionsIcon from "@mui/icons-material/Directions";
-import MenuIcon from "@mui/icons-material/Menu";
-import styled from "styled-components";
 
 export default function CustomizedInputBase({ value, onChange }) {
   const items = [
